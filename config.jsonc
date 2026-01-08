@@ -1,0 +1,319 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "top", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    "width": 1530,
+    // "width": 1280, // Waybar width
+    "spacing": 6, // Gaps between modules (4px)
+    "fixed-center": true,
+    // Choose the order of the modules
+    "modules-left": ["custom/pacman", "network", "backlight", "temperature"],
+    "modules-center": ["mpris", "hyprland/workspaces", "clock", "custom/notifications"],
+    "modules-right": ["custom/clipboard", "custom/icon3", "custom/icon4", "pulseaudio",  "tray", "custom/power"],
+    // Modules configuration
+    "hyprland/workspaces": {
+  "disable-scroll": false,
+  "active-only": false,
+  "on-scroll-up": "hyprctl dispatch workspace +1",
+  "on-scroll-down": "hyprctl dispatch workspace -1",
+  "show-special": true,
+  "all-outputs": true,
+  "on-click": "activate",
+
+  "format": "{icon}",
+
+  "format-icons": {
+    "1": "1",
+    "2": "2",
+    "3": "3",
+    "4": "4",
+    "default": ""
+  },
+
+  "persistent_workspaces": {
+    "1": ["eDP-1"],
+    "2": ["eDP-1"],
+    "3": ["eDP-1"]
+  }
+    },
+
+
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "mpris": {
+	"format": "{player_icon} {dynamic}",
+	"format-paused": "{status_icon} <i>{dynamic}</i>",
+	"max-length": 25,
+
+	"player-icons": {
+		"default": "🎵",
+		"mpv": "🎵"
+	},
+	"status-icons": {
+		"paused": "⏸"
+	}
+	// "ignored-players": ["firefox"]
+},
+    "wlr/taskbar": {
+    "format": "{icon}",
+    "markup": true,
+    "icon-theme": "/usr/share/icons/Papirus-Dark",
+    "icon-size": 13,
+    "tooltip": true,
+    "active-first": true,
+    "on-click": "activate",
+    "on-click-right": "close",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "ignore-list": [
+        "Conky"
+    ],
+    "app_ids-mapping": {
+        "org.gnome.Nautilus": "Files",
+        "org.gnome.Meld": "Meld",
+        "org.gnome.Gnote": "gnote",
+        "org.gnome.Calculator": "Calc",
+        "terminal64.exe": "Mt5",
+        "metaeditor64.exe": "Mt5edit",
+        "vivaldi-stable": "vivaldi",
+        "gnome-terminal-server": "Term",
+        "gnome-system-monitor": "monitor",
+        "org.manjaro.pamac.manager": "pamac",
+        "Manjaro.manjaro-settings-manager": "settings"
+        
+    }
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "mpd": {
+        "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
+        "format-disconnected": "Disconnected ",
+        "format-stopped": "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ",
+        "unknown-tag": "N/A",
+        "interval": 2,
+        "consume-icons": {
+            "on": " "
+        },
+        "random-icons": {
+            "off": "<span color=\"#f53c3c\"></span> ",
+            "on": " "
+        },
+        "repeat-icons": {
+            "on": " "
+        },
+        "single-icons": {
+            "on": "1 "
+        },
+        "state-icons": {
+            "paused": "",
+            "playing": ""
+        },
+        "tooltip-format": "MPD (connected)",
+        "tooltip-format-disconnected": "MPD (disconnected)"
+    },
+    "idle_inhibitor": {
+        "format": "ret {icon}",
+        "format-icons": {
+            "activated": "ret ",
+            "deactivated": "utl "
+        }
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "Africa/Kenya",
+        "interval": 1,
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{%Y %m %d}",
+        "format": "{:%e %a   %I: %M: %S}"
+    },
+    "cpu": {
+        "interval": 1,
+        "format": "   {usage}%",
+        "on-click": "gnome-system-monitor",
+        "min-length": 7,
+        "tooltip": false
+    },
+    "disk": {
+        "format": "{used}",
+        "format-alt": "󰋊 {used}/{total} GiB",
+        "interval": 5,
+        "path": "/"
+    },
+    "custom/launcher": {
+        "format": "Apps 󰻀",
+        "tooltip": false,
+        "min-length": 4,
+        "on-click": "wofi --show drun -I -a -n -W 500 -H 376 -s ~/.config/wofi/themes/gruvbox.css",
+        "on-click-middle": "wtype -k escape",
+        "on-click-right": "jgmenu_run"  
+    },
+    "custom/notifications": {
+    "format": "󰂚",
+    "on-click": "swaync-client -t",
+    "on-click-right": "swaync-client -d",
+    "min-length": 2
+    },
+
+    "memory": {
+        "on-click-right": "kitty -e bashtop",
+        "interval":  2,   
+        "format":  "󰐿  {used:0.1f}G/{swapUsed:0.1f}G"
+    },
+    "temperature": {
+        //"thermal-zone": 2,
+        //"hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "hwmon-path-abs": "/sys/devices/platform/coretemp.0/hwmon",
+        "input-filename": "temp1_input",
+        "interval":  1,
+        "critical-threshold": 55,
+        // "format-critical": "{temperatureC}°C {icon}",
+        "format": "{icon}  {temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{icon}   {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "min-length": 7
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "interval": 1,
+        "format-wifi": "   {signalStrength}%  {bandwidthDownBytes}",
+        "format-ethernet": "{bandwidthDownBytes}/{bandwidthUpBytes} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "Disconnected ⚠",
+        "min-length": 14,
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "on-click-right": "konsole -e bash -c 'sudo nano /etc/wireguard/wg0.conf'"
+
+
+    },
+    "custom/pacman": {
+        "format": "󰣇   {}",
+        "min-length": 7,
+        "tooltip": false,
+        "interval": 3600,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "konsole -e 'sudo pacman -Syu'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8
+    },
+    "custom/weather": {
+        "exec": "python ~/.config/waybar/weather.py",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "on-click": "xdg-open https://weather.com/en-IN/weather/today/l/6121c511144d639b3932fe2a28537be31b9be0d714e86f7ca41f69528423c3a8",
+        "interval": 600
+    },
+    "custom/icon1": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "gnome-system-monitor",
+        "on-click-right": "kitty -e bashtop"
+    },
+    "custom/icon2": {
+        "format": "{}  ",
+        "on-click": "kitty",
+        "on-click-right": "gnome-terminal"
+    },
+    "custom/icon3": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "kate $HOME/.config/hypr/hyprland.conf $HOME/.config/waybar/style.css $HOME/.config/waybar/config.jsonc /etc/wireguard/wg0.conf",
+        "on-click-middle": ""
+    },   
+    "custom/icon4": {
+        "format": "{}  ",
+        "tooltip": false,
+        "on-click": "~/Documents/scripts/reloadwaybar.sh",
+        "on-click-right": "hyperctl reload"
+    },
+    "custom/icon5": {
+        "format": "{} 󰤼 ",
+        "tooltip": false,
+        "on-click": "hyprctl dispatch movetoworkspace -1",
+        "on-click-right": "hyprctl dispatch movetoworkspace +1"
+    },
+    "custom/clipboard": {
+        "format": "{} 󰆒 ",
+        "tooltip": false,
+        "on-click": "cliphist list | rofi -dmenu -hover-select -me-select-entry '' -me-accept-entry MousePrimary | cliphist decode | wl-copy",
+        "on-click-right": "wtype -k escape"
+    },
+    "custom/power": {
+        "format": " ⏻ ",
+        "tooltip": false,
+        "on-click": "wlogout"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}  {volume}% {format_source}",
+        "min-length": 7,
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "amixer -q set Master toggle"
+    }
+//    "custom/media": {
+//        "format": "{icon} {}",
+//        "return-type": "json",
+//        "max-length": 40,
+//        "format-icons": {
+//            "spotify": "",
+//            "default": "🎜"
+//        },
+//        "escape": true,
+//        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+//        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    
+}

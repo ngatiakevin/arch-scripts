@@ -1,0 +1,359 @@
+* {
+/* `otf-font-awesome` is required to be installed for icons */
+font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+font-size: 14px;
+}
+
+#custom-icon1 {
+color: orange;
+font-weight: bold;
+}
+
+#custom-icon2 {
+color: cyan;
+}
+
+#custom-icon3 {
+color: rgb(255, 255, 255);
+}
+
+#custom-icon7 {
+color: rgb(0, 0, 0);
+background-color: #ffffff;
+border-radius: 7px;
+margin: 1px;
+}
+
+#custom-launcher {
+font-size: 14px;
+font-weight: bold;
+color: #ffffff;
+background-color: #000000;
+}
+
+#mpris {
+font-weight: bold;
+border-radius: 7px;
+color: rgb(242, 0, 255);
+background-color: rgb(255, 255, 255);
+}
+
+window#waybar {
+    margin: 10px 14px;
+    padding: 6px 10px;
+
+    background: rgba(20, 22, 30, 0.55);
+/*    backdrop-filter: blur(12px);*/
+/*    -gtk-icon-effect: none;*/
+
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+/*
+ * window#waybar.empty {
+ *    background-color: transparent;
+ * }
+ * window#waybar.solo {
+ *    background-color: #FFFFFF;
+ * }
+ */
+
+window#waybar.termite {
+    background-color: #3F3F3F;
+}
+
+window#waybar.chromium {
+    background-color: #000000;
+    border: none;
+}
+
+button {
+    box-shadow: inset 0 -3px transparent;
+    border: none;
+    border-radius: 0px;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button {
+padding: 0px 5px;
+background: rgba(0, 0, 0, 0.2);
+color: #ffffff;
+}
+
+#workspaces button.persistent {
+background-color: transparent;
+}
+
+#workspaces button:hover {
+background: rgba(0, 0, 0, 0.3);
+}
+
+#workspaces button.active {
+background-color: #ff0088;
+}
+
+#workspaces button.focused {
+background-color: #64727D;
+box-shadow: inset 0 -3px #ffffff;
+}
+
+#workspaces button.urgent {
+background-color: #eb4d4b;
+}
+
+#mode {
+background-color: #64727D;
+border-bottom: 3px solid #ffffff;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-weather,
+#custom-pacman,
+#custom-icon,
+#custom-power,
+#custom-media,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#taskbar,
+#mpris {
+padding: 4px 10px;
+margin: 0 4px;
+
+border-radius: 999px;
+background: rgba(35, 38, 52, 0.65);
+border: 1px solid rgba(255,255,255,0.08);
+}
+
+#workspaces {
+background: rgba(35, 38, 52, 0.65);
+border-radius: 999px;
+padding: 2px 6px;
+margin: 0 6px;
+border: 1px solid rgba(255,255,255,0.08);
+}
+
+#workspaces button {
+background: transparent;
+color: #bbb;
+padding: 2px 8px;
+margin: 0 2px;
+border-radius: 999px;
+}
+
+#workspaces button.active {
+background: rgba(130,170,255,0.35);
+color: #fff;
+}
+
+#workspaces button:hover {
+background: rgba(255,255,255,0.15);
+}
+
+
+
+#taskbar button {
+border-radius: 3px;
+padding: 0px 0px 0px 3px;
+margin: 3px;
+color: #ffffff;
+background-color: rgba(120, 118, 117, 0.1);
+}
+
+#taskbar button.active {
+background-color: rgba(120, 118, 117, 0.8);
+}
+
+#mpd {
+padding: 0px 10px;
+color: #ffffff;
+}
+
+#window,
+#workspaces {
+margin: 0px 4px;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0px;
+}
+
+.modules-right > widget:last-child > #workspaces {
+    margin-right: 0px;
+}
+
+#clock {
+background-color: #FF6347;
+font-weight: bold;
+}
+
+#battery {
+background-color: #ffffff;
+color: #000000;
+}
+
+#battery.charging,
+#battery.plugged {
+color: #ffffff;
+background-color: #26A65B;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+background-color: #f53c3c;
+color: #ffffff;
+animation-name: blink;
+animation-duration: 0.5s;
+animation-timing-function: linear;
+animation-iteration-count: infinite;
+animation-direction: alternate;
+}
+
+label:focus {
+    background-color: #000000;
+}
+
+#cpu {
+background-color: #FD3F92;
+color: #ffffff;
+}
+
+#memory {
+background-color: #0080FF;
+}
+
+#disk {
+background-color: #FFA500;
+}
+
+#backlight {
+background-color: #90b1b1;
+}
+
+#network {
+background-color: #008000;
+}
+
+#network.disconnected {
+background-color: #f53c3c;
+}
+
+#pulseaudio {
+background-color: #BD33A4;
+color: #ffffff;
+}
+
+#pulseaudio.muted {
+background-color: #90b1b1;
+color: #2a5c45;
+}
+
+#wireplumber {
+background-color: #fff0f5;
+color: #000000;
+}
+
+#wireplumber.muted {
+background-color: #f53c3c;
+}
+
+#custom-media {
+background-color: #66cc99;
+color: #2a5c45;
+min-width: 100px;
+}
+
+#temperature {
+background-color: #16A085;
+}
+
+#temperature.critical {
+background-color: #eb4d4b;
+}
+
+#tray {
+background-color: #2980b9;
+}
+
+#idle_inhibitor {
+background-color: #2d3436;
+}
+
+#idle_inhibitor.activated {
+background-color: #ecf0f1;
+color: #2d3436;
+}
+
+#language {
+background: #00b093;
+color: #740864;
+padding: 0px 5px;
+margin: 0px 5px;
+min-width: 16px;
+}
+
+#keyboard-state {
+background: #97e1ad;
+color: #000000;
+padding: 0px 0px;
+margin: 0px 5px;
+min-width: 16px;
+}
+
+#keyboard-state > label {
+padding: 0px 5px;
+}
+
+#custom-weather {
+background-color: #9400D3;
+}
+
+#custom-pacman {
+background-color: #00CCCC;
+}
+
+#custom-icon {
+background-color: #FF6347;
+}
+
+#custom-power {
+background-color: #FF0000;
+}
+
+#scratchpad {
+background: rgba(0, 0, 0, 0.2);
+}
+
+#scratchpad.empty {
+background-color: transparent;
+}

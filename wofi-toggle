@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+hide_on_focus_loss=true
+normal_window=false
+layer=overlay
+
+#!/usr/bin/env bash
+
+PIDFILE="$HOME/.cache/wofi.pid"
+
+if [ -f "$PIDFILE" ] && kill -0 $(cat "$PIDFILE") 2>/dev/null; then
+    kill $(cat "$PIDFILE")
+    rm -f "$PIDFILE"
+else
+    wofi --show drun &
+    echo $! > "$PIDFILE"
+fi
+
