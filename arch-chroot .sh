@@ -1,6 +1,7 @@
 #!/bin/bash
 nano /etc/locale.gen
 locale-gen
+hwclock --systohc
 nano /etc/locale.conf
 nano /etc/vconsole.conf
 
